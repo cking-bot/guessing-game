@@ -1,6 +1,7 @@
 # imports
 import random
-# function and variable initializations
+#import model
+import register
 
 def main():  
     userMenuInput = -1
@@ -67,3 +68,6 @@ def main():
         except ValueError:
             print('\nOops! Please select option from the above menu.') #prints this if the input is not a number
 
+if register.register():
+
+    main()
