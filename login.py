@@ -7,7 +7,7 @@ def login():
 
     if password != user_info.password:
         print("Incorrect credentials.")
-        return False
+        return False, None
 
-    return True
+    return True, user_info
 

@@ -1,7 +1,9 @@
 # imports
 import random
-#import model
 import register
+import model
+
+global userInstance
 
 def main():  
     userMenuInput = -1
@@ -9,8 +11,9 @@ def main():
     highRange = 20
     numberOfGuesses = 0
     totalPossibleGuesses = 7
-    wins = 0
-    losses = 0
+    wins = userInstance.wins
+    losses = userInstance.losses
+
     print('\nWelcome to the Random Number Guessing Game!!!')
     while int(userMenuInput) != 0:
         print("******************")
@@ -37,14 +40,18 @@ def main():
                             numberOfGuesses = int(numberOfGuesses + 1)
                         elif userGuessInput == theAnswer:
                             numberOfGuesses = int(numberOfGuesses + 1)
-                            wins = wins +1
-                            print("You guessed right in %s!!! The right answer was %s!!!\nwins:%s losses:%s\n" % (numberOfGuesses, theAnswer, wins, losses))
+                            userInstance.wins += 1 
+                            model.session.commit()
+                            wins = userInstance.wins                       
+                            print("You guessed right in %s!!! The right answer was %s!!!\nwins: %s losses: %s\n" % (numberOfGuesses, theAnswer, wins, losses))
                             break
                     except ValueError:
                         print('Oops!! That is not a valid input. Please try again...')
                 if numberOfGuesses == totalPossibleGuesses:
-                        losses = losses +1
-                        print("You lost.\n %s %s\n" % (theAnswer, wins, losses))
+                        userInstance.losses += 1
+                        model.session.commit()
+                        losses = userInstance.losses
+                        print("You lost.\n The answer was: %s total wins: %s total losses: %s\n" % (theAnswer, wins, losses))
                 numberOfGuesses = 0
             elif userMenuInput == 2:
                 try:
@@ -68,6 +75,8 @@ def main():
         except ValueError:
             print('\nOops! Please select option from the above menu.') #prints this if the input is not a number
 
-if register.register():
+status, userInstance = register.register()
+
+if status == True:
 
     main()
