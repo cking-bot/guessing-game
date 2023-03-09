@@ -6,7 +6,9 @@
 
 ## Features:
 ### The main features are:
-- 1. The game has register and login functions so that it can track individual instances of the game. It also tracks total wins and losses so individuals can login and it will keep track of those wins and losses.
+- 1. The game has register and login functions so that it can track individual instances of the game. 
+- 2. The game tracks total wins and losses! After an individual logsin, the game will print their total wins and losses once the game is complete.
+- 3. You are able to start the game with a range of 1 - 10, or you can set the range yourself.
 
 ## Starting the game:
 ### to start the game make sure you are in the games directory. Then run python3 game.py and you are good to go!
