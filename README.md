@@ -2,7 +2,7 @@
 ### A random number guessing game written in python. It is connected to a postgres database and does require your own database to run. I used a secrets.env file to store the database connection variables. Please do the same and add your own connection variables. 
 
 ## Requirements:
-### Please run pip install -r requirements.txt to get all of the required modules. I would also recommend setting up a virtual environments before doing so.
+### Please run pip install -r requirements.txt to get all of the required modules. I would also recommend setting up a virtual environment before doing so.
 
 ## Features:
 ### The main features are:
